@@ -3,6 +3,15 @@
 All notable changes to `@sindingmind/cms-astro`. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and versions follow [Semantic Versioning](https://semver.org/). Before 1.0.0, a minor version may break the API.
 
+## [0.1.1] - 2026-11-16
+
+The first version published from GitHub Actions with npm trusted publishing, so it has a provenance statement. The
+code is the same as 0.1.0. (This entry was added after the tag, so the 0.1.1 tarball does not contain it.)
+
+### Changed
+
+- Security reports go through GitHub private security advisories only (`SECURITY.md`).
+
 ## [0.1.0] - 2026-11-16
 
 First public release.
