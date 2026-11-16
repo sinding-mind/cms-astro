@@ -1,0 +1,9 @@
+title: About | Example Co.
+hero:
+  heading: About us
+  points:
+    - Made with Astro
+  count: 7
+cards:
+  - name: Only
+    text: The only card.

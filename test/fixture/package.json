@@ -1,0 +1,9 @@
+{
+  "name": "cms-astro-fixture",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@sindingmind/cms-astro": "*",
+    "astro": "*"
+  }
+}

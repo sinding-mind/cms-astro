@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tgz
+.astro/
+test/fixture/node_modules/
+test/fixture/dist/
+test/fixture/.astro/
+.env
+.env.*

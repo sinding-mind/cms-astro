@@ -1,0 +1,22 @@
+---
+import { getEntry } from "astro:content";
+import { field } from "@sindingmind/cms-astro/attrs";
+
+const page = (await getEntry("pages", "about"))!;
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><title>{page.data.title}</title></head>
+  <body>
+    <h1 class="typed" data-text={page.data.hero.heading} {...field(page, "hero.heading")}>{page.data.hero.heading}</h1>
+    <script>
+      import { isCmsEditing } from "@sindingmind/cms-astro/attrs";
+      const h = document.querySelector<HTMLElement>(".typed")!;
+      if (!isCmsEditing()) {
+        const text = h.dataset.text ?? "";
+        h.textContent = "";
+        [...text].forEach((ch, i) => setTimeout(() => { h.textContent += ch; }, i * 40));
+      }
+    </script>
+  </body>
+</html>

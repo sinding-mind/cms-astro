@@ -1,0 +1,14 @@
+# The front page. Fictional content.
+title: Example Co.
+hero:
+  heading: Plain websites, edited in place
+  lead: A static site whose texts live in YAML files with a schema.
+  points:
+    - Static HTML
+    - No CMS code in production
+  count: 42
+cards:
+  - name: First
+    text: The first card.
+  - name: Second
+    text: The second card.

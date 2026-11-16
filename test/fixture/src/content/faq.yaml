@@ -1,0 +1,8 @@
+- id: what
+  order: 1
+  question: What does it cost?
+  answer: "It costs {price} a month."
+- id: how
+  order: 2
+  question: How do I edit a text?
+  answer: Click it.

@@ -1,0 +1,40 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { field, list, item, image, fokus } from "@sindingmind/cms-astro/attrs";
+import { entryOf, inFileOrder } from "@sindingmind/cms-astro/schema";
+import cms from "../../cms.config.ts";
+
+const page = (await getEntry("pages", "home"))!;
+const { hero, cards } = page.data;
+const faq = inFileOrder(cms, "faq", await getCollection("faq"));
+const faqEntry = entryOf(cms, "faq");
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><title>{page.data.title}</title></head>
+  <body>
+    <h1 {...field(page, "hero.heading")}>{hero.heading}</h1>
+    {hero.lead && <p {...field(page, "hero.lead")}>{hero.lead}</p>}
+    <ul {...list(page, "hero.points")}>
+      {hero.points.map((p, i) => <li {...item(page, "hero.points", i)} {...field(page, `hero.points.${i}`)}>{p}</li>)}
+    </ul>
+    <p class="count" data-to={hero.count}>{hero.count}</p>
+    <div {...list(page, "cards")}>
+      {cards.map((c, i) => <article {...item(page, "cards", i)}><h2 {...field(page, `cards.${i}.name`)}>{c.name}</h2><p {...field(page, `cards.${i}.text`)}>{c.text}</p></article>)}
+    </div>
+    <img src="/photo.svg" alt="A blue square" width="40" height="40" style={fokus({ fokus: { x: 30, y: 70 } })} {...image(page, "photo")} />
+    <dl {...list(faqEntry, "items")}>
+      {faq.map(({ entry, index }) => <div {...item(faqEntry, "items", index)}><dt {...field(faqEntry, `items.${index}.question`)}>{entry.data.question}</dt><dd>{entry.data.answer.replace("{price}", "100 kr.")}</dd></div>)}
+    </dl>
+    <script>
+      import { isCmsEditing } from "@sindingmind/cms-astro/attrs";
+      const el = document.querySelector<HTMLElement>(".count")!;
+      if (!isCmsEditing()) {
+        let n = 0;
+        const to = Number(el.dataset.to);
+        const tick = () => { el.textContent = String(n); if (n++ < to) requestAnimationFrame(tick); };
+        tick();
+      }
+    </script>
+  </body>
+</html>
