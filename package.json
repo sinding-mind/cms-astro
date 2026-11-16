@@ -1,6 +1,6 @@
 {
   "name": "@sindingmind/cms-astro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The open Astro integration of the Sinding Mind CMS: field definitions, Zod schemas, content collections and click-to-edit preview markers that leave no trace in a production build.",
   "license": "MIT",
   "author": "Sinding Mind ApS",
